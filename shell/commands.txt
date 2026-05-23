@@ -1,0 +1,2 @@
+cd shell  
+npm run dev

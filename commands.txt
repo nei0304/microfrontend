@@ -1,0 +1,40 @@
+mkdir microfrontend-teste && cd microfrontend-teste
+
+# App Shell - o container
+npm create vite@latest shell -- --template react-ts
+cd shell
+npm i @originjs/vite-plugin-federation -D
+npm i react-router-dom
+npm i zustand
+cd ..
+
+# App Checkout - o microfrontend
+npm create vite@latest checkout -- --template react-ts  
+cd checkout
+npm i @originjs/vite-plugin-federation -D
+npm i react-router-dom
+cd ..
+
+# App design-system - microfrontend
+
+npm create vite@latest design-system -- --template react-ts
+cd design-system
+npm i
+npm i @originjs/vite-plugin-federation -D
+npm i react-router-dom
+
+
+cd shell && npm i zustand
+cd ../checkout && npm i zustand  
+cd ../design-system && npm i zustand
+
+
+# Rodar os microsfrontends
+# Terminal 1 - shell
+cd shell && npm run build && npm run preview -- --port 5000
+
+# Terminal 2 - design-system
+cd design-system && npm run build && npm run preview -- --port 5002
+
+# Terminal 3 - checkout
+cd checkout && npm run build && npm run preview -- --port 5001

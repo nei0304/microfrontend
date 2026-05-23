@@ -1,0 +1,4 @@
+cd checkout
+npm run build
+npm run preview -- --port 5001 --strictPort / npx vite preview --port 5001 --strictPort
+
